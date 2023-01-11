@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.ModelBinding;
 using System.Web.Mvc;
 
 namespace JulianPerezSolution.Controllers
@@ -26,9 +27,26 @@ namespace JulianPerezSolution.Controllers
         public ActionResult Index()
         {
             Empleados = EmpleadoBusiness.GetEmpleados();
-            return View(Empleados);
+            EmpleadoListViewModel model = new EmpleadoListViewModel()
+            {
+                Empleados=Empleados.ToList(),
+                Busqueda = ""
+            };
+            return View(model);
         }
 
+        // GET: Empleado/busqueda
+        [HttpPost]
+        public ActionResult Index(EmpleadoListViewModel model)
+        {
+            Empleados = EmpleadoBusiness.GetEmpleados(model.Busqueda);
+            EmpleadoListViewModel newModel = new EmpleadoListViewModel()
+            {
+                Empleados = Empleados.ToList(),
+                Busqueda = ""
+            };
+            return View(newModel);
+        }
 
         // GET: Empleado/Create
         public ActionResult Create()
