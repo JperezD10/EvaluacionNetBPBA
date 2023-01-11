@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Entities.Empleado>
+
+@{
+    ViewBag.Title = "Empleados";
+}
+
+<h2>Empleados</h2>
+
+<p>
+    <a href='@Url.Action("Create", "Empleado")' class="btn btn-success">Agregar Empleado</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaAlta)
+        </th>
+        <th>
+            Tipo Doc.
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumDocumento)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaAlta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoDoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumDocumento)
+        </td>
+        <td>
+            <a href='@Url.Action("Edit", "Empleado", new { id = item.Id })' class="btn btn-primary">Editar</a>
+            <a href='@Url.Action("Delete", "Empleado", new { id = item.Id })' class="btn btn-danger">Eliminar</a>
+        </td>
+    </tr>
+}
+
+</table>

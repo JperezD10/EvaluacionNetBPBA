@@ -14,10 +14,12 @@ namespace DataAccess
         SqlTransaction _transaction;
 
         //este ctor es para que no puedan crear instancias con new
-        public Acceso()
+        private Acceso()
         {
             _conexion = new SqlConnection("Data Source=.;Initial Catalog=PTJulianPerezBPBA;Integrated Security=True");
         }
+
+        //singleton
         private static Acceso _instance = null;
 
         public static Acceso GetInstance
