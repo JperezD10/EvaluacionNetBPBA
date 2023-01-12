@@ -11,4 +11,5 @@ Hola! Soy Julian Perez Demonty y esta es mi propuesta de solucion a la Evaluacio
 
 * ASP.NET Framework 4.7.2
 * MVC 5
+* Bootstrap 4
 * Microsoft SQL Server
