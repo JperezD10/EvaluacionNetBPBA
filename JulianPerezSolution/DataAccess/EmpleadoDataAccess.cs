@@ -41,7 +41,11 @@ namespace DataAccess
                 new SqlParameter("@Apellido", Apellido)
             });
             foreach (DataRow fila in tabla.Rows)
-                empleados.Add(MapperHelpers.MapearEmpleado(fila));
+            {
+                Empleado empleado = MapperHelpers.MapearEmpleado(fila);
+                empleado.TipoDoc = documentosDataAccess.GetDocumentoById(empleado.IdTipoDto.Value).Descripcion;
+                empleados.Add(empleado);
+            }
 
             return empleados;
         }
